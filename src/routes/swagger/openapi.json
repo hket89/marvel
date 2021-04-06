@@ -1,0 +1,116 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Marvel API",
+    "description": "This is a simple API for marvel",
+    "contact": {
+      "email": "hket89@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Development"
+    }
+  ],
+  "tags": [
+    {
+      "name": "characters",
+      "description": "Marvel Characters"
+    }
+  ],
+  "paths": {
+    "/characters": {
+      "get": {
+        "tags": ["characters"],
+        "summary": "Retrieve all the Marvel character ids",
+        "description": "Some latency on the first call and the later result will be cached to have better performance.\n",
+        "operationId": "getAllCharacterIds",
+        "responses": {
+          "200": {
+            "description": "Array of characters ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "example": [1, 2, 3],
+                  "items": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/characters/{id}": {
+      "get": {
+        "tags": ["characters"],
+        "summary": "Get character detail by id",
+        "description": "Pass in ID to retrieve character detail.\n",
+        "operationId": "getCharacterById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Character ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Character detail",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CharacterDetail"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "404": {
+            "description": "not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CharacterDetail": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1234
+          },
+          "name": {
+            "type": "string",
+            "example": "X-Man"
+          },
+          "description": {
+            "type": "string",
+            "example": "This is X-Man"
+          }
+        }
+      }
+    }
+  }
+}
