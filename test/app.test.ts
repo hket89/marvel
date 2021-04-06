@@ -1,13 +1,10 @@
-import app from 'src/app';
-import request from 'supertest';
+import { router } from 'src/routes';
+
+import { app } from './tools/app';
 
 describe('GET / - a simple api endpoint', () => {
-  afterAll(() => {
-    app.close();
-  });
-
   it('Health Check', async () => {
-    const result = await request(app).get('/health');
+    const result = await app(router).get('/health');
 
     expect(result.status).toEqual(200);
     expect(result.text).toEqual('ok');

@@ -6,6 +6,8 @@ import { swagger } from './routes/swagger';
 
 const app = createApp(errorHandler, router.allowedMethods(), router.routes());
 
+app.use(swagger);
+
 const listener = app.listen(config.port, () => {
   const address = listener.address();
 
@@ -15,5 +17,4 @@ const listener = app.listen(config.port, () => {
   }
 });
 
-app.use(swagger);
 export default listener;
