@@ -1,4 +1,7 @@
-import { getData } from '../../../src/routes/characters/getAllCharacterIds';
+import {
+  ALL_MARVEL_CHARACTER_ID,
+  getData
+} from '../../../src/routes/characters/getAllCharacterIds';
 import { cacheSpy } from '../../tools/cache';
 import { marvelSpy, mockData } from '../../tools/marvelApi';
 
@@ -14,7 +17,7 @@ describe('getAllCharacterIds.ts', () => {
       const spyCacheSet = cacheSpy.set();
 
       const data = await getData();
-      expect(spyCacheSet).toBeCalledWith('ALL_MARVEL_CHARACTER_ID', expected);
+      expect(spyCacheSet).toBeCalledWith(ALL_MARVEL_CHARACTER_ID, expected);
       expect(data).toEqual(expected);
     });
 

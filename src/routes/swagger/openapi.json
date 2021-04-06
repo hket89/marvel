@@ -22,6 +22,10 @@
     {
       "name": "characters",
       "description": "Marvel Characters"
+    },
+    {
+      "name": "cache",
+      "description": "Clear cache"
     }
   ],
   "paths": {
@@ -87,6 +91,19 @@
           },
           "404": {
             "description": "not found"
+          }
+        }
+      }
+    },
+    "/clear-cache": {
+      "get": {
+        "tags": ["cache"],
+        "summary": "Clear cache",
+        "description": "Manual clear cache.\n",
+        "operationId": "clearCache",
+        "responses": {
+          "200": {
+            "description": "Clear cache done"
           }
         }
       }

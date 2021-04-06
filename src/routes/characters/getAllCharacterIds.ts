@@ -4,7 +4,7 @@ import { cache } from '../../lib/cache';
 import { getCharacters } from '../../services/marvel';
 import { Middleware } from '../../types/koa';
 
-const CACHE_KEY = 'ALL_MARVEL_CHARACTER_ID' as const;
+export const ALL_MARVEL_CHARACTER_ID = 'ALL_MARVEL_CHARACTER_ID' as const;
 const LIMIT = 100 as const;
 
 const getFromAPI = async (limit: number) => {
@@ -28,14 +28,14 @@ const getFromAPI = async (limit: number) => {
 };
 
 export const getData = async () => {
-  const value = cache.get<number[]>(CACHE_KEY);
+  const value = cache.get<number[]>(ALL_MARVEL_CHARACTER_ID);
 
   if (value) {
     return value;
   }
 
   const result = await getFromAPI(LIMIT);
-  cache.set(CACHE_KEY, result);
+  cache.set(ALL_MARVEL_CHARACTER_ID, result);
 
   return result;
 };

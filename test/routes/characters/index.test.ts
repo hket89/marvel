@@ -15,19 +15,21 @@ describe('Router for character', () => {
     it('return 200', async () => {
       marvelSpy.getCharacterById().mockResolvedValue(mockData);
 
-      const result = await app(characterRouter).get('/123');
+      const { status, body } = await app(characterRouter).get('/123');
 
-      expect(result).toMatchSnapshot();
+      expect(status).toEqual(200);
+      expect(body).toEqual({ id: 1, name: 'a', description: 'fake 1' });
     });
 
     it('return 404', async () => {
-      marvelSpy
-        .getCharacterById()
-        .mockRejectedValue({ response: { status: 404 }, isAxiosError: true });
+      marvelSpy.getCharacterById().mockRejectedValue({
+        response: { status: 404, data: { status: 'Not Found' } },
+        isAxiosError: true
+      });
 
-      const result = await app(characterRouter).get('/123');
+      const { status } = await app(characterRouter).get('/123');
 
-      expect(result).toMatchSnapshot();
+      expect(status).toEqual(404);
     });
   });
 
@@ -37,9 +39,10 @@ describe('Router for character', () => {
     it('return 200', async () => {
       marvelSpy.getCharacters().mockResolvedValue(mockData);
 
-      const result = await app(characterRouter).get('/');
+      const { status, body } = await app(characterRouter).get('/');
 
-      expect(result).toMatchSnapshot();
+      expect(status).toEqual(200);
+      expect(body).toEqual([1, 2, 3]);
     });
   });
 });
