@@ -1,4 +1,4 @@
-import { cache } from '../../src/lib/cache';
+import { cache } from 'src/lib/cache';
 
 export const cacheSpy = {
   get: () => jest.spyOn(cache, 'get'),

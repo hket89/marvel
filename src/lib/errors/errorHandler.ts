@@ -1,7 +1,6 @@
 import { AxiosError } from 'axios';
+import { Middleware } from 'src/types/koa';
 import { ValidationError } from 'yup';
-
-import { Middleware } from '../../types/koa';
 
 const isAxiosError = (error: unknown): error is AxiosError =>
   !!(error as AxiosError).isAxiosError;

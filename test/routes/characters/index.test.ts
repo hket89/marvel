@@ -1,4 +1,5 @@
-import { characterRouter } from '../../../src/routes/characters';
+import { characterRouter } from 'src/routes/characters';
+
 import { app } from '../../tools/app';
 import { marvelSpy, mockData } from '../../tools/marvelApi';
 

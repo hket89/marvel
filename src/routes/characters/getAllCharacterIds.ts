@@ -1,8 +1,7 @@
+import { cache } from 'src/lib/cache';
+import { getCharacters } from 'src/services/marvel';
+import { Middleware } from 'src/types/koa';
 import { CharacterResponse } from 'src/types/marvel';
-
-import { cache } from '../../lib/cache';
-import { getCharacters } from '../../services/marvel';
-import { Middleware } from '../../types/koa';
 
 export const ALL_MARVEL_CHARACTER_ID = 'ALL_MARVEL_CHARACTER_ID' as const;
 const LIMIT = 100 as const;

@@ -1,5 +1,5 @@
-import * as marvel from '../../src/services/marvel';
-import { CharacterResponse } from '../../src/types/marvel';
+import * as marvel from 'src/services/marvel';
+import { CharacterResponse } from 'src/types/marvel';
 
 export const marvelSpy = {
   getCharacters: () => jest.spyOn(marvel, 'getCharacters'),

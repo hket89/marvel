@@ -1,8 +1,7 @@
 import Router from '@koa/router';
+import { errorHandler } from 'src/lib/errors/errorHandler';
+import { createApp } from 'src/lib/server';
 import request from 'supertest';
-
-import { errorHandler } from '../../src/lib/errors/errorHandler';
-import { createApp } from '../../src/lib/server';
 
 export const app = (router: Router) =>
   request(

@@ -1,8 +1,7 @@
+import { getCharacterById } from 'src/services/marvel';
+import { Middleware } from 'src/types/koa';
 import { CharacterResponse } from 'src/types/marvel';
-
-import { getCharacterById } from '../../services/marvel';
-import { Middleware } from '../../types/koa';
-import { characterIdPathSchema } from '../../types/schema';
+import { characterIdPathSchema } from 'src/types/schema';
 
 const massageResponse = (input: CharacterResponse) => {
   const {

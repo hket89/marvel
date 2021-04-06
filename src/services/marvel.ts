@@ -1,9 +1,8 @@
 import { AxiosRequestConfig } from 'axios';
 import md5 from 'md5';
+import { config } from 'src/config';
+import { createAxios } from 'src/lib/axios';
 import { CharacterResponse } from 'src/types/marvel';
-
-import { config } from '..//config';
-import { createAxios } from '../lib/axios';
 
 const init = () => {
   const { apikey, apisecret } = config;

@@ -1,7 +1,8 @@
 import {
   ALL_MARVEL_CHARACTER_ID,
   getData
-} from '../../../src/routes/characters/getAllCharacterIds';
+} from 'src/routes/characters/getAllCharacterIds';
+
 import { cacheSpy } from '../../tools/cache';
 import { marvelSpy, mockData } from '../../tools/marvelApi';
 
